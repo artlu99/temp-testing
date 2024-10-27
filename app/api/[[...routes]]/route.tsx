@@ -49,6 +49,10 @@ app
     const { verified, frameData } = c;
     const castObj = c.var.cast;
 
+    console.log("verified:", verified);
+    console.log("frameData:", frameData);
+    console.log("castObj:", castObj);
+
     if (verified && frameData) {
       const fids = await getNumberList("fids");
       const hashes = await getHashList("hashes");
@@ -91,6 +95,7 @@ app
           : [<Button.Reset>Reset</Button.Reset>],
       });
     } else {
+      console.error("Unauthorized Page");
       return c.res({ image: unauthorizedPage() });
     }
   })
